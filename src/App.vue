@@ -24,10 +24,10 @@ let linkToAboutComp = '/about';
   </div>
 
   <RouterView></RouterView>
+  <HelloWorld></HelloWorld>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
 
 export default {
   // to provide the component's name for identification and debugging purposes
@@ -35,7 +35,6 @@ export default {
 
   // to registers other components that can be used within current component
   components: {
-    HelloWorld,
   },
 };
 </script>
