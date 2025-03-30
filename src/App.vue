@@ -24,6 +24,7 @@ let linkToAboutComp = '/about';
   </div>
 
   <RouterView></RouterView>
+  <HelloWorld></HelloWorld>
 </template>
 
 <script>
