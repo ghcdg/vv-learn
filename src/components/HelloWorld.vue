@@ -1,43 +1,38 @@
-<script setup>
-import { ref } from 'vue';
+<template>  
+  <div>  
+    <p>Current Count In HelloWorld.vue: {{ count }}</p>
+    <button @click="incrementCount">Increment Count In HelloWorld.vue</button>  
+    <p>Store ID: {{ storeId }}</p>
+  </div>  
+</template>  
 
-defineProps({
-  msg: String,
+<script setup>  
+import { useStore } from 'vuex';  
+import { computed, onMounted, onUpdated, onUnmounted } from 'vue';  
+
+const storeInstanceInHelloWorld = useStore();  
+const count = computed(() => storeInstanceInHelloWorld.state.count);  
+const storeId = computed(() => storeInstanceInHelloWorld.state.id);  
+
+const incrementCount = () => {  
+  storeInstanceInHelloWorld.commit('increment');  
+};  
+
+onMounted(() => {  
+  console.log("Component Mounted - Store ID:", storeId.value);  
+});  
+
+onUpdated(() => {  
+  console.log("Component Updated - Store ID:", storeId.value);  
+});  
+
+onUnmounted(() => {  
+  console.log("Component Unmounted - Store ID:", storeId.value);  
 });
+</script>  
 
-const count = ref(0);
-</script>
-
-<template>
-  <h5>{{ msg }}</h5>
-
-  <div class="card">
-    <button type="button" @click="count++">count is {{ count }}</button>
-    <p>
-      Edit
-      <code>components/HelloWorld.vue</code> to test HMR
-    </p>
-  </div>
-
-  <p>
-    Check out
-    <a href="https://vuejs.org/guide/quick-start.html#local" target="_blank"
-      >create-vue</a
-    >, the official Vue + Vite starter
-  </p>
-  <p>
-    Learn more about IDE Support for Vue in the
-    <a
-      href="https://vuejs.org/guide/scaling-up/tooling.html#ide-support"
-      target="_blank"
-      >Vue Docs Scaling up Guide</a
-    >.
-  </p>
-  <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
-</template>
-
-<style scoped>
-.read-the-docs {
-  color: #888;
-}
-</style>
+<style scoped>  
+button {  
+  margin-top: 20px;  
+}  
+</style>  
