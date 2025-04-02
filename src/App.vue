@@ -1,28 +1,22 @@
-<script setup>
-import { ref } from 'vue';
-
-</script>
-
 <template>
   <div>
-    <p>App.vue</p>
+    <p>Current Count In App.vue: {{ count }}</p>
+    <button @click="incrementCount">Increment Count In App.vue</button>  
+    <HelloWorld />
   </div>
-
-  <HelloWorld></HelloWorld>
 </template>
 
-<script>
+<script setup>
+import { useStore } from 'vuex';
+import { computed } from 'vue';
 import HelloWorld from './components/HelloWorld.vue';
 
-export default {
-  // to provide the component's name for identification and debugging purposes
-  name: 'App',
+const storeInstanceInApp = useStore();
+const count = computed(() => storeInstanceInApp.state.count);  
 
-  // to registers other components that can be used within current component
-  components: {
-    HelloWorld,
-  },
-};
+const incrementCount = () => {  
+  storeInstanceInApp.commit('increment');  
+};  
 </script>
 
 <style>
