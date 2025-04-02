@@ -1,29 +1,13 @@
 <script setup>
-// code
-let linkToHomeComp = '/';
-let linkToAboutComp = '/about';
+import { ref } from 'vue';
+
 </script>
 
 <template>
-  <!-- <HelloWorld msg="hi"></HelloWorld> -->
-  <strong>Current route path:</strong> {{ $route.fullPath }}
-
   <div>
-    <RouterLink to="/">home (static string to=)</RouterLink>
-    <br />
-    <RouterLink :to="linkToHomeComp">home (binding :to=)</RouterLink>
-    <!-- Issue: There is no variable named "/" defined in the current component. -->
-    <!-- <RouterLink :to="/"></RouterLink> -->
-  </div>
-  <div>
-    <RouterLink to="/about">about (static string to=)</RouterLink>
-    <br />
-    <RouterLink :to="linkToAboutComp">about (binding :to=)</RouterLink>
-    <!-- Issue: There is no variable named "/about" defined in the current component. -->
-    <!-- <RouterLink :to="/about"></RouterLink> -->
+    <p>App.vue</p>
   </div>
 
-  <RouterView></RouterView>
   <HelloWorld></HelloWorld>
 </template>
 
