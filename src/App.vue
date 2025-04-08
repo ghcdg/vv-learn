@@ -1,22 +1,49 @@
 <template>
   <div>
-    <p>Current Count In App.vue: {{ count }}</p>
-    <button @click="incrementCount">Increment Count In App.vue</button>  
+    <p>App.vue</p>
+    <button @click="incrementCount">Increment | By .commit | {{ count }}</button>
+    <br/><button @click="incrementByThousand">+1000 | By mapMutations | {{ countOptionsApi }}</button>
+    <br/><button @click="incrementCountBy">Increment By 666 | {{ count }}</button>
     <HelloWorld />
   </div>
 </template>
 
 <script setup>
-import { useStore } from 'vuex';
 import { computed } from 'vue';
 import HelloWorld from './components/HelloWorld.vue';
+import { useStore } from 'vuex';
 
 const storeInstanceInApp = useStore();
-const count = computed(() => storeInstanceInApp.state.count);  
+const count = computed(() => storeInstanceInApp.state.count);
 
-const incrementCount = () => {  
-  storeInstanceInApp.commit('increment');  
-};  
+
+function incrementCount() {
+  storeInstanceInApp.commit("increment");
+}
+
+function incrementCountBy () {
+  storeInstanceInApp.commit("incrementBy", 666);
+}
+
+</script>
+
+<script>
+import { mapMutations } from 'vuex';
+
+export default {
+  methods: {
+    ...mapMutations([
+      "incrementByThousand",
+    ])
+  },
+
+  computed: {
+    countOptionsApi () {
+      return this.$store.state.count;
+    }
+  }
+}
+
 </script>
 
 <style>

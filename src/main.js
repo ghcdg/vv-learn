@@ -2,18 +2,25 @@ import { createApp } from 'vue';
 import { createStore } from 'vuex';
 import App from './App.vue';
 
-const store = createStore({
-    state () {
+const store = new createStore({
+    state() {
         return {
             count: 0,
-            id: "is me, the state from main.js",
         }
-    }, 
-
+    },
     mutations: {
         increment (state) {
-            state.count++;
+            return state.count++;
+        },
+
+        incrementBy (state, num) {
+            return (state.count += num);
+        },
+
+        incrementByThousand (state) {
+            return (state.count += 1000);
         }
+
     }
 })
 
