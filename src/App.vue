@@ -1,5 +1,11 @@
 <script setup>
-import { ref } from 'vue';
+import { ref,  defineAsyncComponent} from 'vue';
+import A from './components/A.vue';
+import B from './components/B.vue';
+import D from './components/D.vue';
+import E from './components/E.vue';
+const CustomAsync = defineAsyncComponent(() => import('./components/HelloWorld.vue'));
+const CustomE = E;
 
 </script>
 
@@ -8,11 +14,17 @@ import { ref } from 'vue';
     <p>App.vue</p>
   </div>
 
-  <HelloWorld></HelloWorld>
+  <A></A>
+  <B></B>
+  <C></C>
+  <D></D>
+  <hr>
+  <CustomAsync msg=" import component | by defineAsyncComponent"></CustomAsync>
+  <CustomE></CustomE>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import C from './components/C.vue';
 
 export default {
   // to provide the component's name for identification and debugging purposes
@@ -20,7 +32,7 @@ export default {
 
   // to registers other components that can be used within current component
   components: {
-    HelloWorld,
+    C,
   },
 };
 </script>
