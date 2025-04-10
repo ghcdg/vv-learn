@@ -16,21 +16,28 @@ const MyOptionsApiComp = {
      * 遇到字符串模板时会实时编译为渲染函数
      * 所以 要解析这样就需要在 vite.config.js 中进行配置
      */
-    template: `
-        <div>
-            <p>MyOptionsApiComp</p>
-            <p>{{count}}</p>
-            <button @click="increment">increment</button>
-        </div>
-    `,
+    // template: `
+    //     <div>
+    //         <p>MyOptionsApiComp</p>
+    //         <p>{{count}}</p>
+    //         <button @click="increment">increment</button>
+    //     </div>
+    // `,
 
-    // render() {
-    //     return h('div', [
-    //       h('p', 'MyOptionsApiComp'),
-    //       h('p', this.count),
-    //       h('button', { onClick: this.increment }, 'increment')
-    //     ])
-    //   },    
+    /**
+        渲染函数本身就是可执行的JS代码
+
+        不需要编译步骤，所有现代Vue构建版本都支持
+
+        更高效，因为跳过了模板编译阶段
+     */
+    render() {
+        return h('div', [
+          h('p', 'MyOptionsApiComp'),
+          h('p', this.count),
+          h('button', { onClick: this.increment }, 'increment')
+        ])
+      },    
 
     methods: {
         increment() {
