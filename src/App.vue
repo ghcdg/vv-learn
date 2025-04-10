@@ -8,11 +8,14 @@ import { ref } from 'vue';
     <p>App.vue</p>
   </div>
 
-  <HelloWorld></HelloWorld>
+  <!-- <HelloWorld></HelloWorld> -->
+  <GlobalComponent></GlobalComponent>
+  <my-options-api-comp></my-options-api-comp>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue';
+import MyOptionsApiComp from './components/MyOptionsApiComp.js';
 
 export default {
   // to provide the component's name for identification and debugging purposes
@@ -21,6 +24,7 @@ export default {
   // to registers other components that can be used within current component
   components: {
     HelloWorld,
+    MyOptionsApiComp
   },
 };
 </script>
